@@ -8,6 +8,8 @@ type Heap struct {
 
 func (this *Heap) Push(n int) {
 	this.array = append(this.array, n)
+	// since we push to last position then we have to
+	// do heapify up the last element to right position
 	this.heapifyUp(len(this.array)-1)
 }
 
@@ -23,6 +25,8 @@ func (this *Heap) Pop() int {
 	this.array[0] = this.array[l]
 	this.array = this.array[:l]
 
+	// since we pop first element and move the last to the first
+	// then we need to heapify down the first element to right position
 	this.heapifyDown(0)
 	return n
 }
